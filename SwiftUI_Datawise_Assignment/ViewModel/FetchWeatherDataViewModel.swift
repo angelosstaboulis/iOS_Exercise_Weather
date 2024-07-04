@@ -6,20 +6,14 @@
 //
 
 import Foundation
-class FetchWeatherDataViewModel{
+actor FetchWeatherDataViewModel{
     let weather = FetchWeatherData()
-    func fetchWeatherDataDaily(endPoint:String,completion:@escaping ([Model])->()){
-        Task{
-            await weather.fetchWeatherDataDaily(endpoint: endPoint) { array in
-                completion(array)
-            }
-        }
+    func fetchWeatherDataDaily(endPoint:String) async->[Model]{
+        return await weather.fetchWeatherDataDaily(endpoint: endPoint)
+           
+     
     }
-    func fetchWeatherDataHourly(endPoint:String,completion:@escaping ([Model])->()){
-        Task{
-            await weather.fetchWeatherDataHourly(endpoint: endPoint) { array in
-                completion(array)
-            }
-        }
+    func fetchWeatherDataHourly(endPoint:String) async->[Model]{
+        return await weather.fetchWeatherDataHourly(endpoint: endPoint)
     }
 }
