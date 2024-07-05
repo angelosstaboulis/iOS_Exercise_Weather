@@ -11,7 +11,8 @@ import SwiftUI
 struct SwiftUI_Datawise_AssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(currentHourlyWeather: .init(time: "", dayOfWeek: "", imageName: "", condition: "", temperature: 0), currentDayWeather: .init(time: "", dayOfWeek: "", imageName: "", condition: "", temperature: 0))
+            ContentView(viewModel: .init(), currentDayWeather: .init(time: "", dayOfWeek: "", imageName: "", condition: "", temperature: 0))
+              
         }
     }
 }

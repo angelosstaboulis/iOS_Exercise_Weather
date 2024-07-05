@@ -6,7 +6,10 @@
 //
 
 import Foundation
-class Helper{
+struct  Helper{
+    init(){}
+}
+extension Helper{
     func convertISODate(date:String)->String{
         let isoDateFormatter = ISO8601DateFormatter()
         isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)

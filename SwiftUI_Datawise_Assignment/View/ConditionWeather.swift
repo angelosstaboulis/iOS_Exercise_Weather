@@ -27,6 +27,7 @@ struct ConditionWeather: View {
                 }
             }.frame(width:600,height:60)
                 .padding(130)
+               
             
         }.frame(width:400,height:220,alignment: .top)
             

@@ -6,17 +6,24 @@
 //
 
 import SwiftUI
-
+import Charts
 struct BottomChartView: View {
     @Binding var weatherHourlyArray:[CurrentDayWeather]
     var body: some View {
         ScrollView(.horizontal){
-                           VStack{
-                               ChartView(weatherHourlyArray: $weatherHourlyArray)
-                                   .frame(width:UIDevice.current.userInterfaceIdiom == .pad ?  900 : 650)
-                                   
-                           }.frame(height:150)
-                       }
+            VStack{
+                Chart{
+                    ForEach(weatherHourlyArray,id:\.self) { chart in
+                           LineMark(
+                               x: .value("Hour", chart.time),
+                               y: .value("Temperature", chart.temperature)
+                           )
+                          
+                    }
+                }.frame(width:UIDevice.current.userInterfaceIdiom == .pad ?  900 : 650)
+                
+            }.frame(height:150)
+        }
     }
 }
 

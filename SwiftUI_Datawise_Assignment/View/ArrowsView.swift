@@ -10,9 +10,8 @@ import SwiftUI
 struct ArrowsView: View {
     @State private var selectedCell = 2
     @State private var newSelection = 0
-    @State var weatherDailyArray:[WeatherDay] = []
-    @State var fetchWeather = FetchWeatherData()
-    let helper = Helper()
+    @Binding var weatherDailyArray:[WeatherDay] 
+
     var body: some View {
         ScrollViewReader { scrollViewProxy in
             HStack{
@@ -63,15 +62,6 @@ struct ArrowsView: View {
             .onChange(of: selectedCell) {
                 scrollViewProxy.scrollTo(selectedCell, anchor: .center)
             }
-        }.task{
-            let fetchArray =  await fetchWeather.fetchWeatherDataDaily(endpoint: "/daily")
-            for item in fetchArray{
-                weatherDailyArray.append(WeatherDay(dayOfWeek: helper.convertISODate(date:item.date), imageName:  helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
-            }
         }
     }
-}
-
-#Preview {
-    ArrowsView()
 }

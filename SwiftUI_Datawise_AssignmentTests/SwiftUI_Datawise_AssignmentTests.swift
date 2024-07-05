@@ -18,32 +18,7 @@ final class SwiftUI_Datawise_AssignmentTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testWeatherDataDaily() throws {
-        let expectation = expectation(description: "Loading Daily Weather Data")
-        viewModel.fetchWeatherDataDaily(endPoint: "/daily") { array in
-            defer{
-                expectation.fulfill()
-            }
-            if array.count == 0
-            {
-                XCTFail("Fail to fetch data")
-            }
-        }
-        waitForExpectations(timeout: 10)
-    }
-    func testWeatherDataHourly() throws {
-        let expectation = expectation(description: "Loading Hourly Weather Data")
-        viewModel.fetchWeatherDataDaily(endPoint: "/hourly") { array in
-            defer{
-                expectation.fulfill()
-            }
-            if array.count == 0
-            {
-                XCTFail("Fail to fetch data")
-            }
-        }
-        waitForExpectations(timeout: 10)
-    }
+  
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

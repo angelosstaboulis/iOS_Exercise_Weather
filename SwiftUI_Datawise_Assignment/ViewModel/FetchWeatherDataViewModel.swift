@@ -10,8 +10,6 @@ actor FetchWeatherDataViewModel{
     let weather = FetchWeatherData()
     func fetchWeatherDataDaily(endPoint:String) async->[Model]{
         return await weather.fetchWeatherDataDaily(endpoint: endPoint)
-           
-     
     }
     func fetchWeatherDataHourly(endPoint:String) async->[Model]{
         return await weather.fetchWeatherDataHourly(endpoint: endPoint)
