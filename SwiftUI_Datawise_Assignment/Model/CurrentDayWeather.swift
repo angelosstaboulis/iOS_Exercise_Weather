@@ -14,6 +14,6 @@ struct CurrentDayWeather:Identifiable,Hashable{
     let condition:String
     let temperature:Int
     func hash(into hasher: inout Hasher) {
-        
+      
     }
 }

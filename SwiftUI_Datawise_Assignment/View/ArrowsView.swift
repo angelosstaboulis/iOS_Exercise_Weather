@@ -12,6 +12,7 @@ struct ArrowsView: View {
     @State private var newSelection = 0
     @State var weatherDailyArray:[WeatherDay] = []
     @State var fetchWeather = FetchWeatherData()
+    let helper = Helper()
     var body: some View {
         ScrollViewReader { scrollViewProxy in
             HStack{
@@ -65,7 +66,7 @@ struct ArrowsView: View {
         }.task{
             let fetchArray =  await fetchWeather.fetchWeatherDataDaily(endpoint: "/daily")
             for item in fetchArray{
-                weatherDailyArray.append(WeatherDay(dayOfWeek: Helper.shared.convertISODate(date:item.date), imageName:  Helper.shared.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
+                weatherDailyArray.append(WeatherDay(dayOfWeek: helper.convertISODate(date:item.date), imageName:  helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
             }
         }
     }

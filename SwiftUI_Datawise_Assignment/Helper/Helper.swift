@@ -7,8 +7,6 @@
 
 import Foundation
 class Helper{
-    static let shared = Helper()
-    private init(){}
     func convertISODate(date:String)->String{
         let isoDateFormatter = ISO8601DateFormatter()
         isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -70,4 +68,5 @@ class Helper{
         }
         return imageName
     }
+
 }

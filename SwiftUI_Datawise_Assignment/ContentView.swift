@@ -11,9 +11,9 @@ struct ContentView: View {
     @State var fetchWeather = FetchWeatherData()
     @State var currentHourlyWeather:CurrentDayWeather
     @State var currentDayWeather:CurrentDayWeather
-
     @State var weatherDailyArray:[WeatherDay] = []
     @State var weatherHourlyArray:[CurrentDayWeather] = []
+    let helper = Helper()
     var body: some View {
         ZStack{
             BackgroundView()
@@ -28,7 +28,7 @@ struct ContentView: View {
                 .task{
                     let fetchHourlyArray = await fetchWeather.fetchWeatherDataHourly(endpoint: "/hourly")
                     for item in fetchHourlyArray{
-                        weatherHourlyArray.append(CurrentDayWeather(time: Helper.shared.convertISOTime(date: item.date), dayOfWeek: Helper.shared.convertISODateFullDate(date:item.date), imageName:  Helper.shared.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
+                        weatherHourlyArray.append(CurrentDayWeather(time: helper.convertISOTime(date: item.date), dayOfWeek: helper.convertISODateFullDate(date:item.date), imageName: helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
                         
                     }
                     guard let fetchCurrentWeather = weatherHourlyArray.first else {
@@ -37,7 +37,7 @@ struct ContentView: View {
                     currentHourlyWeather = fetchCurrentWeather
                     let fetchDailyArray = await fetchWeather.fetchWeatherDataDaily(endpoint: "/daily")
                     for item in fetchDailyArray{
-                        weatherHourlyArray.append(CurrentDayWeather(time: Helper.shared.convertISOTime(date: item.date), dayOfWeek: Helper.shared.convertISODateFullDate(date:item.date), imageName:  Helper.shared.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
+                        weatherHourlyArray.append(CurrentDayWeather(time: helper.convertISOTime(date: item.date), dayOfWeek: helper.convertISODateFullDate(date:item.date), imageName:  helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
                         
                     }
                     guard let fetchCurrentWeather = weatherHourlyArray.first else {

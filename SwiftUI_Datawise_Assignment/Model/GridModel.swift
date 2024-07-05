@@ -12,6 +12,6 @@ struct GridModel: Identifiable,Hashable {
     let condition: String
     let imagename:String
     func hash(into hasher: inout Hasher) {
-        
+        hasher.combine(id)
     }
 }
