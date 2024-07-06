@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SwiftUI_Datawise_AssignmentApp: App {
+    @StateObject var viewModel = ViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: .init(), currentDayWeather: .init(time: "", dayOfWeek: "", imageName: "", condition: "", temperature: 0))
+            ContentView()
+                .environmentObject(viewModel)
               
         }
     }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class ViewModel{
+class ViewModel:ObservableObject{
     func getCurrentHourlyWeather() async->CurrentDayWeather{
         let fetchWeather = FetchWeatherData()
         let fetchHourlyArray = await fetchWeather.fetchWeatherDataHourly(endpoint: "/hourly")

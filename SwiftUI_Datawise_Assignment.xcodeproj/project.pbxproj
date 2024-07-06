@@ -33,7 +33,6 @@
 		D6EA96AE2C36D405004AAADA /* StatusWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EA96AD2C36D405004AAADA /* StatusWeather.swift */; };
 		D6EA96B02C36D56A004AAADA /* BottomChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EA96AF2C36D56A004AAADA /* BottomChartView.swift */; };
 		D6EA96B22C36D69A004AAADA /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EA96B12C36D69A004AAADA /* BottomButton.swift */; };
-		D6EA96B42C36D6DC004AAADA /* ConditionWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EA96B32C36D6DC004AAADA /* ConditionWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +81,6 @@
 		D6EA96AD2C36D405004AAADA /* StatusWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusWeather.swift; sourceTree = "<group>"; };
 		D6EA96AF2C36D56A004AAADA /* BottomChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomChartView.swift; sourceTree = "<group>"; };
 		D6EA96B12C36D69A004AAADA /* BottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
-		D6EA96B32C36D6DC004AAADA /* ConditionWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +192,6 @@
 				D6EA96AD2C36D405004AAADA /* StatusWeather.swift */,
 				D6EA96AF2C36D56A004AAADA /* BottomChartView.swift */,
 				D6EA96B12C36D69A004AAADA /* BottomButton.swift */,
-				D6EA96B32C36D6DC004AAADA /* ConditionWeather.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,7 +378,6 @@
 				D680D5272C222460001F93CE /* FetchWeatherDataViewModel.swift in Sources */,
 				D685CDD12C21A12800C8B885 /* BackgroundView.swift in Sources */,
 				D685CDCF2C21A0F800C8B885 /* WeatherDayView.swift in Sources */,
-				D6EA96B42C36D6DC004AAADA /* ConditionWeather.swift in Sources */,
 				D6EA96B02C36D56A004AAADA /* BottomChartView.swift in Sources */,
 				D687506D2C231AFD00068456 /* GridModel.swift in Sources */,
 				D69C0AAA2C21D7A600522244 /* Helper.swift in Sources */,

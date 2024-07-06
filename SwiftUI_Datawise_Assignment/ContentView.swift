@@ -8,26 +8,18 @@
 import SwiftUI
 import Foundation
 struct ContentView: View {
-    @State var viewModel:ViewModel
-    @State var currentDayWeather:CurrentDayWeather
-    @State var weatherHourlyArray:[CurrentDayWeather] = []
-    @State var weatherDailyArray:[WeatherDay] = []
     var body: some View {
         ZStack{
             BackgroundView()
             VStack{
-                ConditionWeather(currentWeather:$currentDayWeather)
-                StatusWeather(currentDayWeather:$currentDayWeather)
-                ArrowsView(weatherDailyArray: $weatherDailyArray)
-                BottomChartView(weatherHourlyArray: $weatherHourlyArray)
-                BottomButton()
+                StatusWeather(currentDayWeather: .init(time: "", dayOfWeek: "", imageName: "", condition: "", temperature: 0))
+                    .frame(width: 400,height:360,alignment: .center)
+                Spacer()
+                ArrowsView(weatherDailyArray: []).frame(width: 400,height:160,alignment: .center)
+                BottomChartView(weatherHourlyArray: []).frame(width: 400,height:160,alignment: .center)
+                BottomButton().frame(width: 400,height:60,alignment: .bottom)
+            }.frame(height:UIDevice.current.userInterfaceIdiom == .pad ?  1290 : 1100)
            
-            }.frame(height:UIDevice.current.userInterfaceIdiom == .pad ?  1290 : 900)
-            .task{
-                currentDayWeather = await viewModel.getCurrentHourlyWeather()
-                weatherHourlyArray = await viewModel.getHourlyArrayWeather()
-                weatherDailyArray = await viewModel.getDailyArrayWeather()
-            }
                 
         }
         

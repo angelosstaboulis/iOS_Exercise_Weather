@@ -13,7 +13,7 @@ struct BottomButton: View {
             
         } label: {
             WeatherButton(title: "5-day forecast", textColor: .white, backColor: .orange)
-        }.frame(height:250)
+        }.frame(width:300,height:45,alignment: .bottom)
         Spacer()
         Spacer()
         Spacer()
