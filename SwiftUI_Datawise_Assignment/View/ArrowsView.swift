@@ -6,7 +6,12 @@
 //
 
 import SwiftUI
-
+enum Directions:Int{
+    case Up = 0
+    case Left = 1
+    case Right = 2
+    case Down = 3
+}
 struct ArrowsView: View {
     @State private var selectedCell = 2
     @State private var newSelection = 0
@@ -16,19 +21,12 @@ struct ArrowsView: View {
         ScrollViewReader { scrollViewProxy in
             HStack{
                 Button(action: {
-                    selectedCell = 1
-                    newSelection = selectedCell
+                    gotoDirection(direction: .Up)
                 }, label: {
                     Image(systemName: "chevron.left.2")
                 })
                 Button(action: {
-                    if newSelection == weatherDailyArray.count - 2{
-                        newSelection =  0
-                        selectedCell = newSelection
-                    }else{
-                        newSelection =  selectedCell + 1
-                        selectedCell = newSelection
-                    }
+                    gotoDirection(direction: .Left)
                 }, label: {
                     Image(systemName: "arrow.left")
                 })
@@ -42,19 +40,12 @@ struct ArrowsView: View {
                     }
                 }
                 Button(action: {
-                    if newSelection == 1{
-                        newSelection =  weatherDailyArray.count - 1
-                        selectedCell = newSelection
-                    }else{
-                        newSelection =  selectedCell - 1
-                        selectedCell = newSelection
-                    }
+                    gotoDirection(direction: .Right)
                 }, label: {
                     Image(systemName: "arrow.right")
                 })
                 Button(action: {
-                    selectedCell = weatherDailyArray.count - 1
-                    newSelection = selectedCell
+                    gotoDirection(direction: .Down)
                 }, label: {
                     Image(systemName: "chevron.right.2")
                 })
@@ -65,6 +56,33 @@ struct ArrowsView: View {
                 weatherDailyArray = await viewModel.getDailyArrayWeather()
 
             }
+        }
+
+    }
+    func gotoDirection(direction:Directions){
+        switch direction{
+            case .Up:
+            selectedCell = 1
+            newSelection = selectedCell
+        case .Left:
+            if newSelection == weatherDailyArray.count - 2{
+                newSelection =  0
+                selectedCell = newSelection
+            }else{
+                newSelection =  selectedCell + 1
+                selectedCell = newSelection
+            }
+        case .Right:
+            if newSelection == 1{
+                newSelection =  weatherDailyArray.count - 1
+                selectedCell = newSelection
+            }else{
+                newSelection =  selectedCell - 1
+                selectedCell = newSelection
+            }
+        case .Down:
+            selectedCell = weatherDailyArray.count - 1
+            newSelection = selectedCell
         }
     }
 }
