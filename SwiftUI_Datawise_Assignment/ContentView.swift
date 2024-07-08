@@ -16,7 +16,7 @@ struct ContentView: View {
                     .frame(width: 400,height:360,alignment: .center)
                 Spacer()
                 ArrowsView(weatherDailyArray: []).frame(width: 400,height:160,alignment: .center)
-                BottomChartView(weatherHourlyArray: []).frame(width: 400,height:160,alignment: .center)
+                BottomChartView(weatherHourlyArray: []).frame(width: 400,height:190,alignment: .center)
                 BottomButton().frame(width: 400,height:60,alignment: .bottom)
             }.frame(height:UIDevice.current.userInterfaceIdiom == .pad ?  1290 : 1100)
            

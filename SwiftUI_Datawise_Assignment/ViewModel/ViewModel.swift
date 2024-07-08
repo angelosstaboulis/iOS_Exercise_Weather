@@ -13,7 +13,7 @@ class ViewModel:ObservableObject{
         let helper = Helper()
         var weatherHourlyArray:[CurrentDayWeather] = []
         for item in fetchHourlyArray{
-            weatherHourlyArray.append(CurrentDayWeather(time: helper.convertISOTime(date: item.date), dayOfWeek: helper.convertISODateFullDate(date:item.date), imageName: helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
+            weatherHourlyArray.append(CurrentDayWeather(time: helper.convertISOTime(date: item.date, dateFormat: "hh:mm:ss"), dayOfWeek: helper.convertISODateFullDate(date:item.date,dateFormat: "E dd MMMM yyyy"), imageName: helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
             
         }
         guard let fetchCurrentWeather = weatherHourlyArray.first else {
@@ -30,7 +30,7 @@ class ViewModel:ObservableObject{
                 let helper = Helper()
                 var weatherHourlyArray:[CurrentDayWeather] = []
                 for item in fetchHourlyArray{
-                    weatherHourlyArray.append(CurrentDayWeather(time: helper.convertISOTime(date: item.date), dayOfWeek: helper.convertISODateFullDate(date:item.date), imageName: helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
+                    weatherHourlyArray.append(CurrentDayWeather(time: helper.convertISOTime(date: item.date, dateFormat: "hh:mm:ss"), dayOfWeek: helper.convertISODateFullDate(date:item.date, dateFormat: "E dd MMMM yyyy"), imageName: helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
                     
                 }
                 continuation.resume(returning: weatherHourlyArray)
@@ -45,7 +45,7 @@ class ViewModel:ObservableObject{
                 let helper = Helper()
                 var weatherDailyArray:[WeatherDay] = []
                 for item in fetchDailyArray{
-                    weatherDailyArray.append(WeatherDay(dayOfWeek: helper.convertISODate(date: item.date), imageName: helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
+                    weatherDailyArray.append(WeatherDay(dayOfWeek: helper.convertISODate(date: item.date, dateFormat: "E"), imageName: helper.createIcon(condition: item.condition), condition: item.condition, temperature: item.temperature))
                 }
                 continuation.resume(returning: weatherDailyArray)
             }

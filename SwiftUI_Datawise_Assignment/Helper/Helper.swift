@@ -7,55 +7,45 @@
 
 import Foundation
 struct  Helper{
-    init(){}
+    var isoDateFormatter:ISO8601DateFormatter
+    private init(isoDateFormatter: ISO8601DateFormatter) {
+        self.isoDateFormatter = isoDateFormatter
+    }
+    
+    init() {
+        let isoDateFormatter = ISO8601DateFormatter()
+        isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        isoDateFormatter.formatOptions = [
+            .withFullDate,
+            .withFullTime,
+            .withDashSeparatorInDate,
+            .withFractionalSeconds]
+        self.init(isoDateFormatter: isoDateFormatter)
+    }
 }
 extension Helper{
-    func convertISODate(date:String)->String{
-        let isoDateFormatter = ISO8601DateFormatter()
-        isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        isoDateFormatter.formatOptions = [
-            .withFullDate,
-            .withFullTime,
-            .withDashSeparatorInDate,
-            .withFractionalSeconds]
-
+    func convertISODate(date:String,dateFormat:String)->String{
         guard let realDate = isoDateFormatter.date(from: date) else {
             return ""
         }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E"
+        dateFormatter.dateFormat = dateFormat
         return dateFormatter.string(from:realDate)
     }
-    func convertISOTime(date:String)->String{
-        let isoDateFormatter = ISO8601DateFormatter()
-        isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        isoDateFormatter.formatOptions = [
-            .withFullDate,
-            .withFullTime,
-            .withDashSeparatorInDate,
-            .withFractionalSeconds]
-
+    func convertISOTime(date:String,dateFormat:String)->String{
         guard let realDate = isoDateFormatter.date(from: date) else {
             return ""
         }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm:ss"
+        dateFormatter.dateFormat = dateFormat
         return dateFormatter.string(from:realDate)
     }
-    func convertISODateFullDate(date:String)->String{
-        let isoDateFormatter = ISO8601DateFormatter()
-        isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        isoDateFormatter.formatOptions = [
-            .withFullDate,
-            .withFullTime,
-            .withDashSeparatorInDate,
-            .withFractionalSeconds]
-
+    func convertISODateFullDate(date:String,dateFormat:String)->String{
         guard let realDate = isoDateFormatter.date(from: date) else {
             return ""
         }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E dd MMMM yyyy"
+        dateFormatter.dateFormat = dateFormat
         return dateFormatter.string(from:realDate)
     }
     func createIcon(condition:String)->String{

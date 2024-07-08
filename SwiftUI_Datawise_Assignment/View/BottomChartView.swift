@@ -22,12 +22,10 @@ struct BottomChartView: View {
                         
                     }
                 }.frame(width:UIDevice.current.userInterfaceIdiom == .pad ?  900 : 650)
-                    .task{
+                .task{
                         weatherHourlyArray = await viewModel.getHourlyArrayWeather()
-                        
-                    }
-                
-            }.frame(height:150)
+                }
+            }.frame(height:190)
         }
     }
 }
